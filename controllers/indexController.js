@@ -26,17 +26,25 @@ const loginGet = async (req, res) => {
     res.render("login");
 };
 
-// const loginPost = (req, res) => {
-//     passport.authenticate("local", {
-//         successRedirect: "/",
-//         failureRedirect: "/login",
-//     })
-// };
+const loginPost = passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+});
+
+const logoutGet = async (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.redirect("/");
+    });
+};
 
 module.exports = {
     indexGet,
     registerGet,
     registerPost,
     loginGet,
-    // loginPost,
+    loginPost,
+    logoutGet,
 };
