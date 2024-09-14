@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/stylesheets/styles.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container">
+            <%- include('header') %>
+            <% if (currentUser) {%>
+                <h1>WELCOME BACK <%= currentUser.username %></h1>
+                <a href="/log-out">LOG OUT</a>
+            <% } %>
+        </div>
+    </body>
+</html>
