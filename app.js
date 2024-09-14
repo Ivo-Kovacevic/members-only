@@ -4,9 +4,6 @@ const session = require("express-session");
 const passport = require("./config/passportConfig");
 const path = require("node:path");
 const indexRouter = require("./routes/indexRouter");
-const bcrypt = require("bcryptjs");
-const db = require("./db/queries");
-const pool = require("./db/pool");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,6 +22,7 @@ app.use(
 );
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
+
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();

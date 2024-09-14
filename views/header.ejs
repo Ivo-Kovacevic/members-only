@@ -4,9 +4,13 @@
     </div>
     <nav>
         <ul>
-            <a href="/register">REGISTER</a>
-            /
-            <a href="/login" class="nav-button">LOG IN</a>
+            <% if (currentUser) {%>
+                <a href="/logout">LOG OUT</a>
+            <% } else { %>
+                <a href="/register">REGISTER</a>
+                /
+                <a href="/login" class="nav-button">LOG IN</a>
+            <% } %>
         </ul>
     </nav>
 </header>

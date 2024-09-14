@@ -9,8 +9,9 @@
     <body>
         <div class="container">
             <%- include('header') %>
+
             <% if (currentUser) {%>
-                <h1>WELCOME BACK <%= currentUser.username %></h1>
+                <h1>Hello <%= currentUser.username %></h1>
                 <a href="/logout">LOG OUT</a>
             <% } %>
         </div>
