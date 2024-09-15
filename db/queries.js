@@ -12,7 +12,6 @@ const getUser = async (username) => {
         "SELECT * FROM users WHERE username = $1",
         [username]
     );
-    console.log(rows);
     return rows[0];
 };
 
@@ -21,10 +20,36 @@ const getIdUser = async (id) => {
         id,
     ]);
     return rows[0];
-}
+};
+
+const getAllMessages = async () => {
+    const { rows } = await pool.query(`
+    SELECT 
+        users.username, 
+        messages.id, 
+        messages.title, 
+        messages.text, 
+        messages.time
+    FROM 
+        users 
+    INNER JOIN 
+        messages 
+    ON 
+        users.id = messages.user_id
+    ORDER BY 
+        messages.id DESC;
+    `);
+    return rows;
+};
+
+const deleteMessage = async (messageId) => {
+    await pool.query("DELETE FROM messages WHERE id = $1", [messageId]);
+};
 
 module.exports = {
     insertUser,
     getUser,
     getIdUser,
+    getAllMessages,
+    deleteMessage,
 };

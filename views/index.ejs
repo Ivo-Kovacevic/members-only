@@ -8,12 +8,22 @@
     </head>
     <body>
         <div class="container">
-            <%- include('header') %>
-
-            <% if (currentUser) {%>
-                <h1>Hello <%= currentUser.username %></h1>
-                <a href="/logout">LOG OUT</a>
-            <% } %>
+            <%- include('header') %> <% if (currentUser) { %>
+            <h1>Hello <%= currentUser.username %></h1>
+            <% } if (messages) { messages.forEach(message => { %>
+            <div class="message">
+                <% if (currentUser) { %>
+                    <p class="author">Author: <%= message.username %> </p>
+                <% } else { %>
+                    <p class="author">Author: <span class="blur">anonymus</span> (Log in to see the author)</p>
+                <% } %>
+                <h3><%= message.title %></h3>
+                <p><%= message.text %></p>
+                <% if (currentUser) { %>
+                    <a href="/delete/<%= message.id %>" class="delete">Delete message</a>
+                <% } %>
+            </div>
+            <% }) %> <% } %>
         </div>
     </body>
 </html>

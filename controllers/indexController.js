@@ -4,7 +4,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 const indexGet = async (req, res) => {
-    res.render("index");
+    const messages = await db.getAllMessages();
+    console.log(messages);
+    res.render("index", { messages });
 };
 
 const registerGet = async (req, res) => {
@@ -40,6 +42,12 @@ const logoutGet = async (req, res, next) => {
     });
 };
 
+const deleteMessageGet = async (req, res) => {
+    const messageId = decodeURIComponent(req.params.id);
+    await db.deleteMessage(messageId);
+    res.redirect("/");
+};
+
 module.exports = {
     indexGet,
     registerGet,
@@ -47,4 +55,5 @@ module.exports = {
     loginGet,
     loginPost,
     logoutGet,
+    deleteMessageGet,
 };

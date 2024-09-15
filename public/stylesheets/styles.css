@@ -61,4 +61,23 @@ form {
 form input {
   margin-top: 0.5em;
   margin-bottom: 2em;
+}
+
+.message {
+  background-color: #1f1d24;
+  margin: 10px;
+  padding: 1px 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 5px #060607;
+}
+.message .blur {
+  color: transparent;
+  text-shadow: 0 0 4px #c9c9c9;
+}
+.message .delete {
+  color: #a72e2e;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
 }/*# sourceMappingURL=styles.css.map */

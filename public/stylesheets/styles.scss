@@ -62,3 +62,23 @@ form {
         margin-bottom: 2em;
     }
 }
+
+.message {
+    background-color: $backgroundLighter;
+    margin: 10px;
+    padding: 1px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px $backgroundDarker;
+
+    .blur {
+        color: transparent;
+        text-shadow: 0 0 4px $color;
+    }
+
+    .delete {
+        color: $mainColor;
+        display: flex;
+        width: fit-content;
+        padding: 10px;
+    }
+}

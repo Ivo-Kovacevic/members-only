@@ -12,4 +12,6 @@ indexRouter.post("/login", indexController.loginPost);
 
 indexRouter.get("/logout", indexController.logoutGet);
 
+indexRouter.get("/delete/:id", indexController.deleteMessageGet);
+
 module.exports = indexRouter;
