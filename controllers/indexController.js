@@ -50,7 +50,7 @@ const addMessagePost = async (req, res) => {
     const messageTitle = req.body.title;
     const messageText = req.body.text;
     await db.addMessage(userId, messageTitle, messageText);
-    res.redirect("/")
+    res.redirect("/");
 };
 
 const deleteMessageGet = async (req, res) => {

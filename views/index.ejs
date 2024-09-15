@@ -23,6 +23,7 @@
             <% } %>
             <h3><%= message.title %></h3>
             <p><%= message.text %></p>
+            <p><%= message.time %></p>
             <% if (currentUser) { %>
             <a href="/delete/<%= message.id %>" class="delete">Delete message</a>
             <% } %>

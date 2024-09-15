@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/stylesheets/styles.css" />
-        <title>Document</title>
-    </head>
-    <body>
-        <div class="container">
-            <%- include('header') %>
-            <h1>Register</h1>
-            <form action="/register" method="POST">
-                <label for="username">Username</label>
-                <input
-                    id="username"
-                    name="username"
-                    placeholder="username"
-                    type="text"
-                />
-                <label for="password">Password</label>
-                <input id="password" name="password" type="password" />
-                <button>Register</button>
-            </form>
-        </div>
-    </body>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <%- include('header') %>
+        <h1>Register</h1>
+        <form action="/register" method="POST">
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="username" type="text" />
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" />
+            <button>Register</button>
+        </form>
+    </div>
+</body>
+
 </html>

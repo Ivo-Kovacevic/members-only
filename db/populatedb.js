@@ -13,7 +13,7 @@ const SQL = `
         user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
         title VARCHAR(255),
         text VARCHAR(1023),
-        time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        time TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
 
     INSERT INTO users (username, password)
