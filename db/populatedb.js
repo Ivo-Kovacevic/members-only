@@ -15,6 +15,24 @@ const SQL = `
         text VARCHAR(1023),
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
+
+    INSERT INTO users (username, password)
+    VALUES ('mike', '$2a$10$vuMCOuOnn4RdCIh78AWTae/zKhWL1HA2wmJqd5VG6b7ZriKgxEdmi');
+
+    INSERT INTO users (username, password)
+    VALUES ('nike', '$2a$10$dqAkHmGh20xJi79qb.3UHexX3r8F0RZs.NmnNaoNFaqbjZLv5vwAG');
+
+    INSERT INTO messages (user_id, title, text)
+    VALUES ((SELECT id FROM users WHERE username = 'mike'), 'The Art of Coffee Brewing', 'Just perfected my pour-over technique this morning! The aroma is unmatched. Anyone wants tips on how to brew the perfect cup?');
+
+    INSERT INTO messages (user_id, title, text)
+    VALUES ((SELECT id FROM users WHERE username = 'mike'), 'Adventure Awaits', 'Booked a last-minute flight to Iceland for the Northern Lights! If anyone has been, drop your recommendations! Can’t wait for this adventure.');
+
+    INSERT INTO messages (user_id, title, text)
+    VALUES ((SELECT id FROM users WHERE username = 'nike'), 'Sneakerhead Alert', 'Got my hands on the limited-edition kicks from the new collab! Thinking of unboxing them on stream tomorrow. Who’s tuning in?');
+
+    INSERT INTO messages (user_id, title, text)
+    VALUES ((SELECT id FROM users WHERE username = 'nike'), 'Fitness Journey Begins', 'Just crushed my first 10k run! Training for a marathon now. Any seasoned runners here? Would love some advice on pacing and nutrition.');
 `;
 
 const main = async function () {
