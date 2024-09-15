@@ -30,6 +30,11 @@ header {
         display: flex;
         align-items: center;
         flex-grow: 1;
+        font-size: 1.5em;
+
+        .only {
+            color: $mainColor;
+        }
     }
 
     @media (max-width: 600px) {

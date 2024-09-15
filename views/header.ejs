@@ -1,15 +1,15 @@
 <header>
     <div class="logo">
-        <a href="/" class="logo">MembersOnly</a>
+        <a href="/" class="logo">members<span class="only">Only</span></a>
     </div>
     <nav>
         <ul>
             <% if (currentUser) {%>
-                <a href="/logout">LOG OUT</a>
+            <a href="/logout">LOG OUT</a>
             <% } else { %>
-                <a href="/register">REGISTER</a>
-                /
-                <a href="/login" class="nav-button">LOG IN</a>
+            <a href="/register">REGISTER</a>
+            /
+            <a href="/login" class="nav-button">LOG IN</a>
             <% } %>
         </ul>
     </nav>
