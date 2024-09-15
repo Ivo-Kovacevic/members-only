@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <%- include('header') %>
+        <h1>New message</h1>
+        <form action="/add-message" method="POST">
+            <label for="title">Title</label>
+            <input id="title" name="title" placeholder="title" type="text" />
+            <label for="text">Text</label>
+            <textarea name="text" id="text" rows="5"></textarea>
+            <button>Send message</button>
+        </form>
+    </div>
+</body>
+
+</html>

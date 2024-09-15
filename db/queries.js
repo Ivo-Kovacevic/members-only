@@ -42,6 +42,13 @@ const getAllMessages = async () => {
     return rows;
 };
 
+const addMessage = async (userId, messageTitle, messageText) => {
+    await pool.query(
+        `INSERT INTO messages (user_id, title, text)VALUES ($1, $2, $3)`,
+        [userId, messageTitle, messageText]
+    );
+};
+
 const deleteMessage = async (messageId) => {
     await pool.query("DELETE FROM messages WHERE id = $1", [messageId]);
 };
@@ -51,5 +58,6 @@ module.exports = {
     getUser,
     getIdUser,
     getAllMessages,
+    addMessage,
     deleteMessage,
 };

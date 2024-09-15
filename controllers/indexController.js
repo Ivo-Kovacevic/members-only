@@ -5,7 +5,6 @@ const LocalStrategy = require("passport-local").Strategy;
 
 const indexGet = async (req, res) => {
     const messages = await db.getAllMessages();
-    console.log(messages);
     res.render("index", { messages });
 };
 
@@ -42,6 +41,18 @@ const logoutGet = async (req, res, next) => {
     });
 };
 
+const addMessageGet = async (req, res) => {
+    res.render("add-message");
+};
+
+const addMessagePost = async (req, res) => {
+    const userId = req.user.id;
+    const messageTitle = req.body.title;
+    const messageText = req.body.text;
+    await db.addMessage(userId, messageTitle, messageText);
+    res.redirect("/")
+};
+
 const deleteMessageGet = async (req, res) => {
     const messageId = decodeURIComponent(req.params.id);
     await db.deleteMessage(messageId);
@@ -55,5 +66,7 @@ module.exports = {
     loginGet,
     loginPost,
     logoutGet,
+    addMessageGet,
+    addMessagePost,
     deleteMessageGet,
 };
