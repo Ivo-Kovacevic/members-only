@@ -2,6 +2,8 @@ const db = require("../db/queries");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const { validationResult } = require("express-validator");
+const { validateNewUser } = require("../validation/user-validation");
 
 const indexGet = async (req, res) => {
     const messages = await db.getAllMessages();
@@ -12,16 +14,26 @@ const registerGet = async (req, res) => {
     res.render("register");
 };
 
-const registerPost = async (req, res, next) => {
-    try {
-        bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
-            await db.insertUser(req.body.username, hashedPassword);
-            res.redirect("/");
-        });
-    } catch (err) {
-        return next(err);
-    }
-};
+const registerPost = [
+    validateNewUser,
+    async (req, res, next) => {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).render("register", {
+                    errors: errors.array(),
+                    userData: req.body,
+                });
+            }
+            bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
+                await db.insertUser(req.body.username, hashedPassword);
+                res.redirect("/");
+            });
+        } catch (err) {
+            return next(err);
+        }
+    },
+];
 
 const loginGet = async (req, res) => {
     res.render("login");
@@ -33,7 +45,10 @@ const loginPost = (req, res, next) => {
             return next(err);
         }
         if (!user) {
-            return res.render("login", { messageUsername: info.messageUsername, messagePassword: info.messagePassword });
+            return res.render("login", {
+                messageUsername: info.messageUsername,
+                messagePassword: info.messagePassword,
+            });
         }
         req.logIn(user, (err) => {
             if (err) {

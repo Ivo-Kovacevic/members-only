@@ -14,9 +14,14 @@
         <h1>Register</h1>
         <form action="/register" method="POST">
             <label for="username">Username</label>
-            <input id="username" name="username" type="text" />
+            <input id="username" name="username" type="text" value="<%= locals.userData && userData.username ? userData.username : '' %>" />
+            <%- include('partials/usernameErrors') %>
+
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" />
+            <input id="password" name="password" type="password" value="<%= locals.userData && userData.password ? userData.password : '' %>" />
+
+            <%- include('partials/passwordErrors') %>
+
             <button>Register</button>
         </form>
     </div>
