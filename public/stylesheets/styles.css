@@ -113,7 +113,7 @@ form .error {
 .message {
   background-color: #1f1d24;
   margin: 10px;
-  padding: 1px 10px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 5px #060607;
 }
@@ -127,4 +127,9 @@ form .error {
   width: -moz-fit-content;
   width: fit-content;
   padding: 10px;
+}
+
+.small {
+  font-size: small;
+  margin: 5px 0;
 }/*# sourceMappingURL=styles.css.map */
