@@ -27,10 +27,22 @@ const loginGet = async (req, res) => {
     res.render("login");
 };
 
-const loginPost = passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-});
+const loginPost = (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return res.render("login", { messageUsername: info.messageUsername, messagePassword: info.messagePassword });
+        }
+        req.logIn(user, (err) => {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect("/");
+        });
+    })(req, res, next);
+};
 
 const logoutGet = async (req, res, next) => {
     req.logout((err) => {

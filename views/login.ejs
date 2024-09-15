@@ -12,11 +12,21 @@
     <div class="container">
         <%- include('header') %>
         <h1>Log in</h1>
+        <% console.log(locals); %>
+
         <form action="/login" method="POST">
             <label for="username">Username</label>
-            <input id="username" name="username" placeholder="username" type="text" />
+            <input id="username" name="username" type="text" />
+            <% if (locals.messageUsername) { %>
+            <p class="error"><%= messageUsername %></p>
+            <% } %>
+
             <label for="password">Password</label>
             <input id="password" name="password" type="password" />
+            <% if (locals.messagePassword) { %>
+            <p class="error"><%= messagePassword %></p>
+            <% } %>
+
             <button>Log in</button>
         </form>
     </div>
