@@ -14,13 +14,13 @@
         <h1>Log in</h1>
         <form action="/login" method="POST">
             <label for="username">Username</label>
-            <input id="username" name="username" type="text" />
+            <input id="username" name="username" type="text" value="<%= locals.userData && userData.username ? userData.username : '' %>" />
             <% if (locals.messageUsername) { %>
             <p class="error"><%= messageUsername %></p>
             <% } %>
 
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" />
+            <input id="password" name="password" type="password" value="<%= locals.userData && userData.password ? userData.password : '' %>" />
             <% if (locals.messagePassword) { %>
             <p class="error"><%= messagePassword %></p>
             <% } %>

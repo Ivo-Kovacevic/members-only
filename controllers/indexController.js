@@ -48,6 +48,7 @@ const loginPost = (req, res, next) => {
             return res.render("login", {
                 messageUsername: info.messageUsername,
                 messagePassword: info.messagePassword,
+                userData: req.body,
             });
         }
         req.logIn(user, (err) => {
