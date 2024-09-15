@@ -26,8 +26,13 @@ const registerPost = [
                 });
             }
             bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
-                await db.insertUser(req.body.username, hashedPassword);
-                res.redirect("/");
+                const newUser = await db.insertUser(req.body.username, hashedPassword);
+                req.logIn(newUser, (err) => {
+                    if (err) {
+                        return next(err);
+                    }
+                    return res.redirect("/");
+                });
             });
         } catch (err) {
             return next(err);

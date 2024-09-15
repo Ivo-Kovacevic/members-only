@@ -1,10 +1,11 @@
 const pool = require("./pool");
 
 const insertUser = async (username, password) => {
-    await pool.query(`INSERT INTO users (username, password) VALUES ($1, $2)`, [
+    const result = await pool.query(`INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id, username`, [
         username,
         password,
     ]);
+    return result.rows[0];
 };
 
 const getUser = async (username) => {
