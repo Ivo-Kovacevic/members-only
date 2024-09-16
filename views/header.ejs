@@ -4,12 +4,19 @@
     </div>
     <nav>
         <ul>
-            <% if (currentUser) {%>
+            <% if (currentUser) { %>
+            <% if (currentUser.member === false) { %>
+            <a href="/become-member">BECOME MEMBER</a>
+            <% } else { %>
+            MEMBER<img src="/images/member.webp" alt="">
+            <% } %>
+            /
             <a href="/logout">LOG OUT</a>
+
             <% } else { %>
             <a href="/register">REGISTER</a>
             /
-            <a href="/login" class="nav-button">LOG IN</a>
+            <a href="/login">LOG IN</a>
             <% } %>
         </ul>
     </nav>

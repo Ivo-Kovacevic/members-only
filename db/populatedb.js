@@ -5,7 +5,8 @@ const SQL = `
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         username VARCHAR(255) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NULL
+        password VARCHAR(255) NOT NULL,
+        member BOOLEAN DEFAULT FALSE
     );
 
     CREATE TABLE IF NOT EXISTS messages (
@@ -16,8 +17,8 @@ const SQL = `
         time TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
 
-    INSERT INTO users (username, password)
-    VALUES ('mike', '$2a$10$vuMCOuOnn4RdCIh78AWTae/zKhWL1HA2wmJqd5VG6b7ZriKgxEdmi');
+    INSERT INTO users (username, password, member)
+    VALUES ('mike', '$2a$10$vuMCOuOnn4RdCIh78AWTae/zKhWL1HA2wmJqd5VG6b7ZriKgxEdmi', TRUE);
 
     INSERT INTO users (username, password)
     VALUES ('nike', '$2a$10$dqAkHmGh20xJi79qb.3UHexX3r8F0RZs.NmnNaoNFaqbjZLv5vwAG');

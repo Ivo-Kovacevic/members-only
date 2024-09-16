@@ -37,6 +37,14 @@ header .logo .only {
   color: #a72e2e;
   font-weight: bold;
 }
+header ul {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+header img {
+  max-width: 30px;
+}
 @media (max-width: 600px) {
   header {
     flex-direction: column;
@@ -113,6 +121,11 @@ h1 {
 .form-container form .link {
   margin-top: 32px;
   text-decoration: underline;
+}
+
+.member-perks {
+  margin: 50px;
+  padding: 50px;
 }
 
 .add-message {

@@ -38,6 +38,16 @@ header {
         }
     }
 
+    ul {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    img {
+        max-width: 30px;
+    }
+
     @media (max-width: 600px) {
         flex-direction: column;
 
@@ -121,6 +131,11 @@ h1 {
             text-decoration: underline;
         }
     }
+}
+
+.member-perks {
+    margin: 50px;
+    padding: 50px;
 }
 
 .add-message {

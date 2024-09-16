@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <title>membersOnly</title>
+</head>
+
+<body>
+    <div class="container">
+        <%- include('header') %>
+        <div class="form-container">
+            <form action="/become-member" method="POST">
+                <h1>Become member</h1>
+
+                <label for="question">What is 2 + 2?</label>
+                <input id="question" name="question" type="text" value="<%= locals.userAnswer && userAnswer ? userAnswer : '' %>" required />
+                <% if (locals.userAnswer) { %>
+                <p class="error">Wrong answer</p>
+                <% } %>
+
+                <button>Check answer</button>
+            </form>
+
+            <div class="member-perks">
+                <h1>Member perks</h1>
+                <ul>
+                    <li>Delete messages</li>
+                    <li>Thats about it</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

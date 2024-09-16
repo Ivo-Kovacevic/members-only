@@ -26,7 +26,10 @@ const registerPost = [
                 });
             }
             bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
-                const newUser = await db.insertUser(req.body.username, hashedPassword);
+                const newUser = await db.insertUser(
+                    req.body.username,
+                    hashedPassword
+                );
                 req.logIn(newUser, (err) => {
                     if (err) {
                         return next(err);
@@ -92,6 +95,23 @@ const deleteMessageGet = async (req, res) => {
     res.redirect("/");
 };
 
+const becomeMemberGet = async (req, res) => {
+    console.log(req.session);
+    res.render("become-member");
+};
+
+const becomeMemberPost = async (req, res) => {
+    const userAnswer = req.body.question;
+    const answer = 4;
+    const userId = req.session.passport.user;
+    console.log(userId);
+    if (userAnswer == answer) {
+        await db.becomeMember(userId);
+        return res.redirect("/");
+    }
+    res.render("become-member", { userAnswer });
+};
+
 module.exports = {
     indexGet,
     registerGet,
@@ -102,4 +122,6 @@ module.exports = {
     addMessageGet,
     addMessagePost,
     deleteMessageGet,
+    becomeMemberGet,
+    becomeMemberPost,
 };
