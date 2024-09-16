@@ -22,8 +22,11 @@
 
                 <label for="password">Password</label>
                 <input id="password" name="password" type="password" value="<%= locals.userData && userData.password ? userData.password : '' %>" required />
-
                 <%- include('partials/passwordErrors') %>
+
+                <label for="passwordConfirm">Confirm password</label>
+                <input id="passwordConfirm" name="passwordConfirm" type="password" value="<%= locals.userData && userData.passwordConfirm ? userData.passwordConfirm : '' %>" required />
+                <%- include('partials/passwordConfirmErrors') %>
 
                 <button>Register</button>
 
