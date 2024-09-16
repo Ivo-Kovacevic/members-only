@@ -53,48 +53,64 @@ a {
   text-decoration: none;
 }
 
-h1 {
-  text-align: center;
+.form-container {
+  display: flex;
+  justify-content: center;
 }
-
-form {
+.form-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #1f1d24;
+  margin: 50px;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 5px #060607;
 }
-form label {
+.form-container form h1 {
+  text-align: center;
+  margin: 0;
+}
+.form-container form label {
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
-form input,
-form textarea {
+.form-container form input,
+.form-container form textarea {
+  width: 100%;
   border-radius: 10px;
   border: 0;
   padding: 10px;
   background-color: #060607;
   color: #c9c9c9;
+  box-sizing: border-box;
 }
-form input:focus-visible,
-form textarea:focus-visible {
+.form-container form input:focus-visible,
+.form-container form textarea:focus-visible {
   outline: 2px solid #a72e2e;
 }
-form button {
+.form-container form button {
+  width: 100%;
   font-size: 1em;
   border: 1px solid #19181a;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
-  margin: 10px;
+  margin-top: 32px;
   padding: 10px;
   color: #c9c9c9;
   background-color: #a72e2e;
   transition: 0.1s;
 }
-form button:hover {
+.form-container form button:hover {
   background-color: #6b1d1d;
 }
-form .error {
+.form-container form .error {
   color: #a72e2e;
   margin: 5px;
+}
+.form-container form .link {
+  margin-top: 32px;
+  text-decoration: underline;
 }
 
 .add-message {

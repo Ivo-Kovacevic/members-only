@@ -12,19 +12,24 @@
 <body>
     <div class="container">
         <%- include('header') %>
-        <h1>Register</h1>
-        <form action="/register" method="POST">
-            <label for="username">Username</label>
-            <input id="username" name="username" type="text" value="<%= locals.userData && userData.username ? userData.username : '' %>" />
-            <%- include('partials/usernameErrors') %>
+        <div class="form-container">
+            <form action="/register" method="POST">
+                <h1>Register</h1>
 
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" value="<%= locals.userData && userData.password ? userData.password : '' %>" />
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" value="<%= locals.userData && userData.username ? userData.username : '' %>"  required />
+                <%- include('partials/usernameErrors') %>
 
-            <%- include('partials/passwordErrors') %>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" value="<%= locals.userData && userData.password ? userData.password : '' %>" required />
 
-            <button>Register</button>
-        </form>
+                <%- include('partials/passwordErrors') %>
+
+                <button>Register</button>
+
+                <a href="/login" class="link">Already have an account? Login</a>
+            </form>
+        </div>
     </div>
 </body>
 
