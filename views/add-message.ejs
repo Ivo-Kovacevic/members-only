@@ -12,14 +12,16 @@
 <body>
     <div class="container">
         <%- include('header') %>
-        <h1>New message</h1>
-        <form action="/add-message" method="POST">
-            <label for="title">Title</label>
-            <input id="title" name="title" placeholder="title" type="text" />
-            <label for="text">Text</label>
-            <textarea name="text" id="text" rows="5"></textarea>
-            <button>Send message</button>
-        </form>
+        <div class="form-container">
+            <form action="/add-message" method="POST">
+                <h1>New message</h1>
+                <label for="title">Title</label>
+                <input id="title" name="title" placeholder="title" type="text" />
+                <label for="text">Text</label>
+                <textarea name="text" id="text" rows="5"></textarea>
+                <button>Send message</button>
+            </form>
+        </div>
     </div>
 </body>
 
